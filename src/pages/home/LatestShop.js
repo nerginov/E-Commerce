@@ -35,7 +35,7 @@ const LatestShop = (props) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/products/latest-products"
+          "https://e-commerce-api-j092.onrender.com/api/products/latest-products"
         );
         setlatestFourProducts(response.data);
       } catch (error) {

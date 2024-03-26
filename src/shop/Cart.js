@@ -42,7 +42,7 @@ const Cart = forwardRef(
         setIsIncrementDisabled(true);
         // Fetch the current quantity in stock from the server
         const response = await axios.get(
-          `http://localhost:4000/api/products/${productId}/quantity`
+          `https://e-commerce-api-j092.onrender.com/api/products/${productId}/quantity`
         );
 
         const quantityInStock = response.data.quantityInStock;
@@ -106,7 +106,7 @@ const Cart = forwardRef(
       try {
         // Remove the product from the cart in the database
         const response = await axios.post(
-          "http://localhost:4000/api/cart/remove-from-cart",
+          "https://e-commerce-api-j092.onrender.com/api/cart/remove-from-cart",
           {
             cartId: Cookies.get("cartId"),
             productId: productId,
@@ -129,11 +129,14 @@ const Cart = forwardRef(
     const updateQuantityInDatabase = async (productId, newQuantity) => {
       try {
         // Update the quantity of the product in the database cart
-        await axios.post("http://localhost:4000/api/cart/update-quantity", {
-          cartId: Cookies.get("cartId"),
-          productId: productId,
-          quantity: newQuantity,
-        });
+        await axios.post(
+          "https://e-commerce-api-j092.onrender.com/api/cart/update-quantity",
+          {
+            cartId: Cookies.get("cartId"),
+            productId: productId,
+            quantity: newQuantity,
+          }
+        );
       } catch (error) {
         console.error("Error updating product quantity in cart:", error);
       }
@@ -176,7 +179,7 @@ const Cart = forwardRef(
       try {
         // Verify quantities before checkout
         const verifyQuantitiesResponse = await axios.post(
-          "http://localhost:4000/api/stripe/verify-quantities",
+          "https://e-commerce-api-j092.onrender.com/api/stripe/verify-quantities",
           { cartItems: cart }
         );
 
@@ -206,7 +209,7 @@ const Cart = forwardRef(
 
         // Quantities are valid, proceed with checkout
         const response = await axios.post(
-          "http://localhost:4000/api/stripe/create-checkout-session",
+          "https://e-commerce-api-j092.onrender.com/api/stripe/create-checkout-session",
           {
             cartItems: cart,
             returnUrl: window.location.href, // Pass the current page URL as return URL
@@ -258,7 +261,7 @@ const Cart = forwardRef(
             <div className={styles.product} key={product.id}>
               <img
                 alt={product.image}
-                src={`http://localhost:4000/${product.image}`}
+                src={`https://e-commerce-api-j092.onrender.com/${product.image}`}
                 onClick={() => {
                   redirectToProduct(product.id, product.name);
                 }}

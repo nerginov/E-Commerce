@@ -83,7 +83,7 @@ const ShopItem = (props) => {
           {isHovered && windowWidth > 1024 ? (
             <>
               <img
-                src={`http://localhost:4000/${props.hoverImage}`}
+                src={`https://e-commerce-api-j092.onrender.com/${props.hoverImage}`}
                 alt={props.hoverImage}
                 onClick={toggleQuickView}
               />
@@ -99,7 +99,7 @@ const ShopItem = (props) => {
             </>
           ) : (
             <img
-              src={`http://localhost:4000/${props.image}`}
+              src={`https://e-commerce-api-j092.onrender.com/${props.image}`}
               alt={props.image}
               onClick={redirectToDetailedProduct}
             />

@@ -60,7 +60,7 @@ function App() {
     try {
       // Fetch the current quantity in stock from the server
       const response = await axios.get(
-        `http://localhost:4000/api/products/${product.id}/quantity`
+        `https://e-commerce-api-j092.onrender.com/api/products/${product.id}/quantity`
       );
       const quantityInStock = response.data.quantityInStock;
 
@@ -88,11 +88,14 @@ function App() {
       }
 
       // If the quantity check passes, send a request to add the product to the cart in DB
-      await axios.post("http://localhost:4000/api/cart/add-to-cart", {
-        product_id: product.id,
-        quantity: product.quantity,
-        cart_id: Cookies.get("cartId"),
-      });
+      await axios.post(
+        "https://e-commerce-api-j092.onrender.com/api/cart/add-to-cart",
+        {
+          product_id: product.id,
+          quantity: product.quantity,
+          cart_id: Cookies.get("cartId"),
+        }
+      );
 
       // Find the index of the product in the cart array
       const existingProductIndex = cart.findIndex(
@@ -130,7 +133,7 @@ function App() {
       const fetchCartData = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:4000/api/cart/fetch-cart-data/${cartId}`
+            `https://e-commerce-api-j092.onrender.com/api/cart/fetch-cart-data/${cartId}`
           );
           const cartData = response.data;
 

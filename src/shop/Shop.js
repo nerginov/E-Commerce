@@ -12,7 +12,9 @@ const Shop = (props) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/products");
+        const response = await axios.get(
+          "https://e-commerce-api-j092.onrender.com/api/products"
+        );
         setAllProducts(response.data);
         setDisplayedProducts(response.data);
       } catch (error) {

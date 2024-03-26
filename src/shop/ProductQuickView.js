@@ -73,7 +73,7 @@ const ProductQuickView = forwardRef((props, ref) => {
       setIsIncrementDisabled(true);
       // Fetch the current quantity in stock from the server
       const response = await axios.get(
-        `http://localhost:4000/api/products/${productID}/quantity`
+        `https://e-commerce-api-j092.onrender.com/api/products/${productID}/quantity`
       );
 
       const quantityInStock = response.data.quantityInStock;
@@ -124,7 +124,7 @@ const ProductQuickView = forwardRef((props, ref) => {
               {images.map((img, index) => (
                 <img
                   key={index}
-                  src={`http://localhost:4000/${img}`}
+                  src={`https://e-commerce-api-j092.onrender.com/${img}`}
                   alt={img}
                 />
               ))}

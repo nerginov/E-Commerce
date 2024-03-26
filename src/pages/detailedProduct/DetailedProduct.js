@@ -49,7 +49,9 @@ const DetailedProduct = (props) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/products");
+        const response = await axios.get(
+          "https://e-commerce-api-j092.onrender.com/api/products"
+        );
         const foundProduct = response.data.find(
           (p) => p.id === Number(numericUrlParameter)
         );
@@ -128,7 +130,7 @@ const DetailedProduct = (props) => {
       setIsIncrementDisabled(true);
       // Fetch the current quantity in stock from the server
       const response = await axios.get(
-        `http://localhost:4000/api/products/${product.id}/quantity`
+        `https://e-commerce-api-j092.onrender.com/api/products/${product.id}/quantity`
       );
 
       const quantityInStock = response.data.quantityInStock;
@@ -204,7 +206,7 @@ const DetailedProduct = (props) => {
               {productImagePaths.map((path, index) => (
                 <img
                   key={index}
-                  src={`http://localhost:4000/${path}`}
+                  src={`https://e-commerce-api-j092.onrender.com/${path}`}
                   alt={path}
                   onClick={() => handleImageClick(index + 1)}
                   style={{ cursor: "pointer" }}
@@ -266,7 +268,7 @@ const DetailedProduct = (props) => {
                 {productImagePaths.map((path, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:4000/${path}`}
+                    src={`https://e-commerce-api-j092.onrender.com/${path}`}
                     alt={path}
                     onClick={() => handleImageClick(index + 1)}
                     style={{

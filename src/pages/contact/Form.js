@@ -94,7 +94,7 @@ const Form = (props) => {
     try {
       // Send form data to the backend endpoint
       const response = await axios.post(
-        "http://localhost:4000/api/contact/submit",
+        "https://e-commerce-api-j092.onrender.com/api/contact/submit",
         formState.formData
       );
 
