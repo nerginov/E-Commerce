@@ -1,0 +1,22 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+.payment-methods {
+  display: flex;
+  justify-content: center;
+  box-shadow: variables.$box-bottom-shadow;
+  border-bottom: 1px solid variables.$border-color;
+  img {
+    width: 4rem;
+    max-width: 4rem;
+    height: auto;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  img:not(:last-child) {
+    margin-right: 4rem;
+
+    @include mixins.media(phone) {
+      margin-right: 1.5rem;
+    }
+  }
+}

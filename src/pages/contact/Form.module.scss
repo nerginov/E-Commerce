@@ -1,0 +1,186 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+
+.form {
+  display: grid;
+  grid-template-areas:
+    "fname lname"
+    "email email"
+    "subject subject"
+    "button space";
+  grid-column-gap: 3rem;
+  grid-row-gap: 1rem;
+  @include mixins.media(phone) {
+    grid-column-gap: 1rem;
+  }
+  input::placeholder {
+    font-size: variables.$small;
+  }
+  #firstName {
+    //start
+    -webkit-appearance: none;
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+    appearance: none;
+    color: #495057;
+    font-size: variables.$medium;
+    font-weight: variables.$normal-weight;
+    height: 5.5rem;
+    padding: 0.6rem 0rem;
+    //form contrrol on all elements// need predefinition
+    grid-area: fname;
+  }
+
+  #lastName {
+    -webkit-appearance: none;
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+    appearance: none;
+    color: #495057;
+    font-size: variables.$medium;
+    font-weight: variables.$normal-weight;
+    height: 5.5rem;
+    padding: 0.6rem 0rem;
+    grid-area: lname;
+    overflow-x: scroll;
+  }
+
+  #email {
+    -webkit-appearance: none;
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+    appearance: none;
+    color: #495057;
+    font-size: variables.$medium;
+    font-weight: variables.$normal-weight;
+    height: 5.5rem;
+    padding: 0.6rem 0rem;
+    grid-area: email;
+  }
+
+  #subject {
+    &::placeholder {
+      font-size: variables.$small;
+    }
+    margin-top: 1rem; // extra space
+    grid-area: subject;
+    -webkit-appearance: none;
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+    appearance: none;
+    color: #495057;
+    font-size: variables.$medium;
+    font-weight: variables.$normal-weight;
+    padding: 0.6rem 0.5rem;
+    resize: vertical;
+    //without the height property
+  }
+
+  .submitBtn {
+    background: variables.$accent-color;
+    color: variables.$text-white;
+    grid-area: button;
+    padding: 1.8rem 2.4rem;
+    justify-self: left;
+    font-size: variables.$medium;
+    font-weight: variables.$normal-weight;
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    &:hover {
+      opacity: 0.9;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #007bff; /* You can change the color here */
+    border-radius: 50%;
+    width: 2rem; /* You can adjust the size of the spinner */
+    height: 2rem; /* You can adjust the size of the spinner */
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  #firstName,
+  #lastName,
+  #email {
+    position: relative;
+    padding-left: 0.5rem;
+  }
+  .errors {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    color: #cc0000;
+  }
+}
+.successfully-sent-email-modal {
+  border: 2px solid variables.$accent-color;
+  border-radius: 0.1rem;
+  outline: 0.6rem solid variables.$background-main;
+  padding: 5rem 5rem;
+  background-color: variables.$background-main;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    max-width: 80%;
+    text-align: center;
+    font-size: variables.$header-tiny;
+    color: variables.$text-black;
+    margin-bottom: 2rem;
+  }
+  p {
+    max-width: 80%;
+    padding-top: 2rem;
+    border-top: 1px solid variables.$border-color;
+    color: variables.$text-grayish;
+    font-size: variables.$large;
+    text-align: center;
+  }
+
+  button {
+    margin-top: 5rem;
+    width: max-content;
+    color: variables.$text-white;
+    background-color: variables.$accent-color;
+    padding: 1.4rem 3rem;
+    font-size: variables.$medium;
+    letter-spacing: 0.1rem;
+    border: none;
+    &:hover {
+      transition: opacity 0.3s ease;
+      opacity: 0.9;
+    }
+    &:active {
+      transition: transform 0.3s ease;
+      transform: scale(0.95);
+    }
+  }
+  @keyframes scaleInFromBottomCenter {
+    0% {
+      transform: translate(-50%, 100%) scale(0);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  animation: scaleInFromBottomCenter 0.4s ease-in-out;
+}

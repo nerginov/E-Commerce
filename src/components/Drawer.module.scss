@@ -1,0 +1,67 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss";
+
+.drawer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
+  width: calc(100vw - 70%);
+  z-index: 111;
+  // display: none;
+  top: 0;
+  right: 0;
+  visibility: hidden;
+  background-color: white;
+  border: 0.2rem solid rgb(234, 233, 233);
+  box-shadow: 0px 1px 6px -2px rgba(133, 133, 133, 0.51);
+  -webkit-box-shadow: 0px 1px 6x -2px rgba(133, 133, 133, 0.51);
+  -moz-box-shadow: 0px 1px;
+  @include mixins.media(tablet) {
+    width: calc(100vw - 40%) !important;
+  }
+  @include mixins.media(phone) {
+    width: calc(100vw - 20%) !important;
+  }
+}
+.active-drawer {
+  visibility: visible;
+  @keyframes slideIn {
+    from {
+      right: calc(-100vw - 70%);
+      @include mixins.media(tablet) {
+        right: calc(-100vw - 40%);
+      }
+      @include mixins.media(phone) {
+        right: calc(-100vw - 20%);
+      }
+      /* Initial position off-screen to the right */
+    }
+    to {
+      right: 0 !important; /* Final position at the right edge */
+    }
+  }
+  animation: slideIn 0.3s ease forwards;
+  right: 0;
+}
+.inactive-drawer {
+  @keyframes slideOut {
+    from {
+      /* Initial position off-screen to the right */
+      right: 0;
+      visibility: visible;
+    }
+    to {
+      right: calc(-100vw - 70%); /* Final position at the right edge */
+      @include mixins.media(tablet) {
+        right: calc(-100vw - 40%);
+      }
+      @include mixins.media(phone) {
+        right: calc(-100vw - 20%);
+      }
+    }
+  }
+  animation: slideOut 0.8s ease forwards;
+  visibility: hidden;
+}

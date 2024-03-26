@@ -1,0 +1,18 @@
+@use "../mixins.scss";
+@use "../variables.scss" as variables;
+#search {
+  border-radius: 0;
+  padding: 2rem 4rem;
+  background-image: url("../assets/magnifying-glass-solid.svg");
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position-x: 1rem;
+  background-position-y: center;
+  border: none;
+  border-right: 1px solid variables.$border-color;
+  font-size: variables.$medium;
+  @include mixins.media(phone) {
+    padding-inline: 3rem;
+    font-size: variables.$small;
+  }
+}

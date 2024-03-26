@@ -1,0 +1,74 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+
+.contactWrapper {
+  display: grid;
+  grid-template-areas:
+    "a b"
+    "c d";
+  grid-template-columns: 1fr 1fr;
+  padding: 5rem 15% 5rem 15%;
+  @include mixins.media(phone) {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 2rem 5rem 2rem;
+  }
+  @include mixins.media(tablet) {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 10rem 5rem 10rem;
+  }
+
+  .header {
+    grid-area: a;
+    font-size: variables.$header-xlarge;
+    // font-weight: variables.$semiBold-weight;
+    margin-bottom: 3rem;
+    @include mixins.media(phone) {
+      text-align: center;
+      font-size: variables.$header-large;
+    }
+  }
+  .form {
+    width: 100%;
+    grid-area: c;
+    border-right: 1px solid #dee2e6;
+    padding-right: 10rem;
+    @include mixins.media(phone, tablet) {
+      border: none;
+      padding-right: 0rem;
+      border: none;
+    }
+  }
+  .content-info {
+    padding-left: 10rem;
+    grid-area: d;
+    max-width: 50rem;
+    @include mixins.media(phone, tablet) {
+      margin-top: 10rem;
+      padding-inline: 0rem;
+    }
+    &--header {
+      font-size: variables.$header-medium;
+      line-height: 1.4;
+      // font-weight: variables.$semiBold-weight;
+      margin-bottom: 3rem;
+      @include mixins.media(phone) {
+        text-align: center;
+      }
+      span {
+        // opacity: 0.8;
+        padding-inline: 0.5rem;
+        font-family: "Yeseva One", cursive;
+        background: variables.$accent-color;
+        color: variables.$text-white;
+      }
+    }
+    &--paragraph {
+      font-size: variables.$medium;
+      font-weight: variables.$normal-weight;
+      color: black;
+      text-align: left;
+    }
+  }
+}

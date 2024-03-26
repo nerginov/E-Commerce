@@ -1,0 +1,110 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+
+.proccess-section {
+  background: variables.$background-main;
+  padding: 5rem 15rem;
+  box-shadow: variables.$box-bottom-shadow;
+  @include mixins.media(phone) {
+    padding-inline: 2rem;
+  }
+  @include mixins.media(tablet) {
+    padding-inline: 5rem;
+  }
+
+  .header {
+    text-align: center;
+
+    h1 {
+      font-size: variables.$header-medium;
+      position: relative;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15%;
+        border-bottom: 2px solid variables.$border-color;
+      }
+      span {
+        color: variables.$accent-color;
+      }
+      span:last-child {
+        @include mixins.media(phone) {
+          color: variables.$text-black;
+        }
+      }
+      @include mixins.media(phone) {
+        font-size: variables.$header-small;
+      }
+    }
+    p {
+      font-size: variables.$large;
+      color: variables.$text-lightBlack;
+      @include mixins.media(phone) {
+        font-size: variables.$medium;
+      }
+    }
+  }
+  .steps {
+    margin-top: 5rem;
+    display: flex;
+
+    @include mixins.media(phone) {
+      flex-direction: column;
+      row-gap: 3rem;
+    }
+
+    &__step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .img-container {
+        position: relative;
+        border-radius: 50%;
+        border: 1px solid variables.$border-color;
+        padding: 2rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 3rem;
+          height: auto;
+        }
+      }
+
+      &:nth-child(2) .img-container {
+        border-color: variables.$accent-color;
+      }
+      &:nth-child(4) .img-container {
+        &::after {
+          content: "";
+        }
+      }
+
+      h2 {
+        margin-bottom: 1rem;
+        font-size: variables.$medium;
+        text-align: center;
+        @include mixins.media(phone) {
+          margin-bottom: 0rem;
+        }
+      }
+      p {
+        width: 80%;
+        font-size: variables.$tiny;
+        text-align: center;
+        color: variables.$text-lightBlack;
+      }
+    }
+    .arrow {
+      transform: translateY(1.5rem);
+    }
+  }
+}

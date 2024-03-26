@@ -1,0 +1,221 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss";
+.filter-drawer {
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: variables.$small;
+    color: variables.$text-lightBlack;
+    input {
+      margin-right: 0.5rem;
+    }
+  }
+
+  button {
+    appearance: none;
+    background: none;
+    width: 100%;
+  }
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.2rem solid variables.$border-color;
+    padding: 2rem;
+    // margin-bottom: 3rem;
+
+    .drawer-close {
+      border: none;
+      appearance: none;
+      background: none;
+      position: absolute;
+      right: 2rem;
+      font-size: variables.$header-tiny;
+      font-weight: variables.$semiBold-weight;
+      color: variables.$accent-color;
+      padding: 0;
+      width: auto;
+      height: auto;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+    h1 {
+      font-size: variables.$large;
+      color: variables.$text-black;
+      margin-bottom: 0;
+      letter-spacing: 0.12em;
+    }
+  }
+  .filter {
+    border-bottom: 0.2rem solid variables.$border-color;
+    padding: 2rem;
+
+    .filter-price {
+      overflow: hidden;
+
+      .price-slider-container {
+        display: flex;
+        align-items: center;
+        min-height: 2rem;
+        width: 100%;
+        position: relative;
+        margin-bottom: 2rem;
+
+        #sliderMin,
+        #sliderMax {
+          -webkit-appearance: none;
+          appearance: none;
+          height: 2px;
+          width: 100%;
+          position: absolute;
+          background-color: rgb(234, 233, 233);
+          pointer-events: none;
+
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            pointer-events: all;
+            width: 2rem;
+            height: 2rem;
+            background-color: variables.$accent-color;
+            border-radius: 50%;
+            box-shadow: 0 0 0 1px variables.$text-white;
+            cursor: pointer;
+          }
+
+          &::-webkit-slider-thumb:hover {
+            background: variables.$accent-color;
+            opacity: 0.95;
+          }
+
+          &::-webkit-slider-thumb:active {
+            box-shadow: inset 0 0 3px white, 0 0 9px white;
+            -webkit-box-shadow: inset 0 0 3px white, 0 0 9px white;
+          }
+        }
+        #sliderMax {
+          height: 0;
+          z-index: 1;
+        }
+      }
+      .inputs-grp {
+        display: flex;
+        align-items: center;
+
+        label {
+          border: 0.5px solid;
+          color: variables.$text-lightBlack;
+          font-size: variables.$medium;
+          padding-inline: 1rem;
+          user-select: none;
+
+          input {
+            width: 100%;
+            color: variables.$text-lightBlack;
+            outline: none;
+            border: none;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            text-align: end;
+            font-size: variables.$medium;
+            -moz-appearance: textfield; /* Firefox */
+            appearance: textfield; /* Other modern browsers */
+            /* Disable the increment and decrement buttons */
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+              appearance: none;
+              margin: 0;
+            }
+          }
+        }
+        .separator {
+          margin-inline: 1.5rem;
+        }
+      }
+    }
+    button {
+      border: none;
+      font-size: variables.$medium;
+      color: variables.$text-lightBlack;
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1px solid variables.$text-lightBlack;
+      border-radius: 3px;
+      cursor: pointer;
+
+      /* Style the checkmark icon (when checked) */
+      &:checked::after {
+        content: "\2714\fe0e";
+        display: block;
+        text-align: center;
+        color: variables.$accent-color;
+        font-size: variables.$medium;
+        line-height: 16px;
+        @include mixins.media(phone) {
+          line-height: 12px;
+        }
+      }
+    }
+
+    .collapseBtn {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      img {
+        max-width: 1.2rem;
+        height: auto;
+      }
+    }
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    label {
+      width: max-content;
+      cursor: pointer;
+      user-select: none;
+    }
+    overflow: hidden;
+  }
+  #price,
+  #availability {
+    display: flex;
+  }
+
+  .drawer-footer {
+    display: flex;
+    flex: 1 1 auto;
+    padding-inline: 2rem;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      font-size: variables.$large;
+      border: none;
+      color: variables.$text-white;
+      background-color: variables.$accent-color;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+
+      @include mixins.media(phone) {
+        font-size: variables.$medium;
+      }
+      &:hover {
+        opacity: 0.9;
+      }
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}

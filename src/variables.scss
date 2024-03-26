@@ -1,0 +1,59 @@
+//f-weights
+$light-weight: 300;
+$normal-weight: 400;
+$medium-weight: 500;
+$semiBold-weight: 600;
+//f-sizes
+$tiny: 1.2rem;
+$small: 1.4rem;
+$medium: 1.6rem;
+$large: 1.8rem;
+$header-tiny: 2rem;
+$header-small: 2.4rem;
+$header-medium: 3rem;
+$header-large: 3.6rem;
+$header-xlarge: 4rem;
+
+//colors
+$text-white: #ffffff;
+$text-lightBlack: rgb(59, 59, 59);
+$text-black: #000000;
+$text-grayish: #7e8784;
+$text-darkGray: #495057;
+$background-main: #ffffff;
+$background-secondary: #f3f4f3;
+$background-teritary: #7e8784;
+
+$accent-color: #debe48;
+$accent-darker-color: #443b2c;
+
+$border-color: #dee2e6;
+
+@function accent-color-alpha($alpha) {
+  @return rgba(222, 190, 72, $alpha);
+}
+@function background-main-alpha($alpha) {
+  @return rgba(255, 255, 255, $alpha);
+}
+@function background-black-alpha($alpha) {
+  @return rgba(0, 0, 0, $alpha);
+}
+
+//spacing used for layout (not including components such as navbar/buttons/inputs)
+$spacing-tiny: 2rem;
+$spacing-small: 5rem;
+$spacing-medium: 10rem;
+$spacing-large: 15rem;
+$spacing-huge: 20rem;
+
+//shadows
+$box-bottom-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+  0 1px 2px -1px rgba(0, 0, 0, 0.1); // use wherver i need box shadow on the bottom part
+
+$box-shadow-drawers: -5px 0px 10px rgba(0, 0, 0, 0.2); //used for filter/cart drawers
+
+$box-shadow-allrounder: 0px 1px 11px -2px rgba(133, 133, 133, 0.51); //drops shadow on everyside just like sort
+
+@function box-shadow-inset-alpha($alpha) {
+  @return inset 0 0 0 1000px rgba(0, 0, 0, $alpha); // use for background filter
+}

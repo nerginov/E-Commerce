@@ -1,0 +1,12 @@
+<svg height="200px" width="400px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
+  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+  <g id="SVGRepo_iconCarrier">
+    <polygon points="366.024,466.728 220.056,45.272 512,45.272"></polygon>
+    <polygon style="fill:#00000;" points="145.976,45.272 291.944,466.728 0,466.728"></polygon>
+    
+    <!-- Horizontal lines moved left and right -->
+    <line x1="-240" y1="50%" x2="30" y2="50%" style="stroke:#000;stroke-width:25;stroke-linecap:round;"></line>
+    <line x1="470" y1="50%" x2="750" y2="50%" style="stroke:#000;stroke-width:25;stroke-linecap:round;"></line>
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+
+.care {
+  padding: 5rem 20%;
+  @include mixins.media(phone) {
+    padding: 5rem 2rem;
+  }
+
+  p {
+    font-size: variables.$medium;
+  }
+
+  ul {
+    // list-style-type: none;
+    margin-bottom: 2rem;
+
+    li {
+      font-size: 1.5rem;
+      line-height: 1.4;
+      margin-left: 2.5rem;
+      span {
+        font-family: "Yeseva One", cursive;
+      }
+    }
+  }
+
+  &-header {
+    img {
+      max-width: 5rem;
+      // transform: translateY(-1rem);
+    }
+
+    letter-spacing: 0.15rem;
+    text-align: center;
+    font-size: variables.$header-large;
+    // font-weight: variables.$semiBold-weight;
+    margin-bottom: 5rem;
+
+    @include mixins.media(phone) {
+      font-size: variables.$header-medium;
+    }
+  }
+  &-suggest {
+    margin-bottom: 0.5rem;
+  }
+
+  &-intro {
+    margin-bottom: 2rem;
+  }
+
+  &-outro {
+    margin-bottom: 2rem;
+  }
+
+  a {
+    position: relative;
+    font-weight: bold;
+    text-decoration: none;
+    color: variables.$accent-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

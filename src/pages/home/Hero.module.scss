@@ -1,0 +1,117 @@
+@use "../../mixins.scss";
+@use "../../variables.scss" as variables;
+
+.hero {
+  background-image: url("../../assets/hero-bg.jpeg");
+  background-attachment: fixed;
+  background-size: 100%;
+
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100vh;
+  @include mixins.media(phone) {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+  @include mixins.media(tablet) {
+    background-size: cover;
+    background-attachment: scroll;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.03);
+    z-index: 1;
+    //layer over the background img
+  }
+
+  .welcome-card {
+    @include mixins.absolute-center(both);
+    background-color: variables.$background-main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 35rem;
+    width: 55rem;
+    border: 2px solid variables.$accent-color;
+    outline: 0.6rem solid variables.$background-main;
+    z-index: 2;
+
+    @include mixins.media(phone) {
+      @include mixins.absolute-center(vertical);
+      width: auto;
+      left: 5rem;
+      right: 5rem;
+    }
+
+    h1 {
+      img {
+        @include mixins.absolute-center(horizontal);
+        width: 20rem;
+        @include mixins.media(phone) {
+          width: 15rem;
+        }
+      }
+      line-height: 8rem;
+      font-weight: normal;
+      letter-spacing: 0.3rem;
+      text-align: center;
+      color: variables.$text-black;
+      border-bottom: 1px solid variables.$border-color;
+
+      @include mixins.media(phone) {
+        font-size: variables.$header-large;
+        line-height: 6rem;
+        letter-spacing: normal;
+        padding-bottom: 2rem;
+      }
+
+      span {
+        font-size: variables.$header-small;
+        color: variables.$text-black;
+
+        @include mixins.media(phone) {
+          font-size: variables.$header-tiny;
+          line-height: normal;
+        }
+      }
+    }
+    .slogan {
+      color: variables.$text-grayish;
+      line-height: 3rem;
+      font-size: variables.$large;
+      letter-spacing: 0.3rem;
+      text-align: center;
+      // margin-top: -2rem;
+      @include mixins.media(phone) {
+        font-size: variables.$medium;
+        margin-inline: 1rem;
+      }
+    }
+  }
+  button {
+    color: variables.$text-white;
+    background-color: variables.$accent-color;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    width: 70%;
+    font-size: variables.$medium;
+    letter-spacing: 0.1rem;
+    border: none;
+    margin-bottom: 1rem;
+    &:hover {
+      transition: opacity 0.3s ease;
+      opacity: 0.9;
+    }
+    &:active {
+      transition: transform 0.3s ease;
+      transform: scale(0.95);
+    }
+  }
+}

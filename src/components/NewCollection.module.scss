@@ -1,0 +1,59 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss";
+.new-collection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: variables.$box-bottom-shadow;
+  background-color: variables.$background-secondary;
+  @include mixins.media(phone) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    // background-color: variables.$background-main;
+    border-top: 1px solid variables.$border-color;
+    max-height: 100vh;
+  }
+
+  .new-collection-CTA {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include mixins.media(phone) {
+      order: 2;
+    }
+    p {
+      font-size: variables.$medium;
+      margin-bottom: 3rem;
+    }
+
+    strong {
+      font-size: 2rem;
+      font-family: "Yeseva One", cursive;
+      background-color: variables.$accent-color;
+      color: white;
+      padding: 1rem 2rem;
+      opacity: 0.8;
+    }
+    a {
+      color: black;
+      font-size: variables.$medium;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .img-container {
+    img {
+      max-width: 100%;
+      height: 100%;
+      @include mixins.media(phone, tablet) {
+        height: auto;
+      }
+    }
+  }
+}

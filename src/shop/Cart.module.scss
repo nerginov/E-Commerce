@@ -1,0 +1,176 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss";
+.cart-drawer {
+  z-index: 100;
+
+  @include mixins.media(tablet, phone) {
+    padding-bottom: 10rem;
+  }
+
+  padding-inline: 3rem;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.2rem solid variables.$border-color;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    h1 {
+      font-size: variables.$header-small;
+    }
+    .close {
+      font-size: variables.$large + 1;
+      color: variables.$accent-color;
+      appearance: none;
+      background: none;
+      border: none;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  .shipping {
+    font-size: 1.2rem;
+    border-bottom: 0.2rem solid variables.$border-color;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .cart-product-container {
+    border-bottom: 0.2rem solid variables.$border-color;
+    overflow-y: auto;
+    .product {
+      display: grid;
+      border-bottom: 1px solid #e0e0e0;
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+      grid-template-areas:
+        " img titel titel"
+        "img price price"
+        " img quantity removebtn";
+      @include mixins.media(phone) {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-height: 4rem;
+        align-self: flex-end;
+        .customized-quantity-input {
+          grid-area: quantity;
+          display: flex;
+          border: 1px solid variables.$border-color;
+          margin-right: 0.5rem;
+          text-align: center;
+          .quantity-increase,
+          .quantity-decrease {
+            padding-inline: 1.5rem;
+            color: variables.$text-darkGray;
+            font-size: variables.$medium;
+            border: none;
+            background: none;
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+          }
+
+          .quantity-input {
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              appearance: none;
+              //removing arrows
+            }
+            font-size: variables.$small;
+            color: variables.$text-black;
+            border: none;
+            background: none;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        .remove {
+          grid-area: removebtn;
+          margin-left: 0.5rem;
+          color: variables.$text-darkGray;
+          font-size: 1rem;
+          height: max-content;
+          appearance: none;
+          border: none;
+          border-bottom: 1px solid variables.$border-color;
+          background: none;
+          // text-decoration: underline;
+          text-transform: uppercase;
+          letter-spacing: 0.2rem;
+          &:hover {
+            transform: scale(1.05);
+            color: variables.$text-black;
+          }
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+      }
+      img {
+        padding-right: 0.5rem;
+        cursor: pointer;
+        grid-area: img;
+        width: 14rem;
+        max-width: 100%;
+        height: 100%;
+      }
+      h2 {
+        cursor: pointer;
+        grid-area: titel;
+        font-size: variables.$large;
+        @include mixins.media(phone) {
+          font-size: variables.$medium;
+        }
+      }
+      p {
+        grid-area: price;
+        font-size: variables.$small;
+      }
+    }
+  }
+
+  .pricing {
+    width: 45%;
+    padding-top: 2rem;
+    p {
+      font-family: "Yeseva One", cursive;
+      font-size: variables.$tiny;
+      font-weight: variables.$medium-weight;
+      line-height: 1.4;
+      margin-bottom: 0rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    span {
+      font-weight: variables.$medium-weight;
+    }
+  }
+  .checkout {
+    text-transform: uppercase;
+    font-size: variables.$medium;
+    border: none;
+    color: variables.$text-white;
+    background-color: variables.$accent-color;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    &:hover {
+      transition: opacity 0.3s ease;
+      opacity: 0.9;
+    }
+    &:active {
+      transition: transform 0.3s ease;
+      transform: scale(0.95);
+    }
+  }
+}
+//

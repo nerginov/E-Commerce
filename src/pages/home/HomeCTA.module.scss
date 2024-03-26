@@ -1,0 +1,122 @@
+@use "../../mixins.scss";
+@use "../../variables.scss" as variables;
+
+.cta-section {
+  background-image: url("../../assets/cta-img.jpeg");
+  // background-position: center center;
+  background-repeat: no-repeat;
+  background-position-y: 10rem;
+
+  background-size: cover;
+  background-attachment: fixed;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  height: 80vh;
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "left1 right"
+    "left2 right";
+  grid-template-columns: 1fr 1fr;
+  padding-inline: 15rem;
+
+  @include mixins.media(phone) {
+    background-position-y: 0rem;
+    display: flex;
+    background-attachment: scroll;
+    flex-direction: column;
+    padding-inline: 2rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  @include mixins.media(tablet) {
+    background-position-y: 0rem;
+    background-attachment: scroll;
+    padding-inline: 0rem;
+    padding-left: 5rem;
+  }
+
+  .cta-content-left {
+    grid-area: left2;
+    h1 {
+      // opacity: 0.85;
+      width: max-content;
+      background: variables.background-main-alpha(0.85);
+      color: variables.$text-black;
+      margin: 0;
+      margin-bottom: 1rem;
+      padding: 1rem 3rem;
+      font-family: "Yeseva One", cursive;
+      font-size: variables.$header-medium;
+      font-weight: bold;
+      @include mixins.media(phone) {
+        font-size: variables.$header-small;
+      }
+    }
+    h1:last-child {
+      background-color: variables.background-black-alpha(0.85);
+      color: variables.$text-white;
+      @include mixins.media(phone) {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+  .cta-content-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-area: right;
+    align-self: center;
+    justify-self: end;
+    height: 100%;
+    max-width: 40rem;
+    background-color: variables.accent-color-alpha(0.85);
+    padding-inline: 5rem;
+    @include mixins.media(tablet) {
+      max-width: 30rem;
+    }
+
+    h2 {
+      font-size: variables.$header-medium;
+      margin-bottom: 2rem;
+      color: variables.$text-white;
+      @include mixins.media(phone) {
+        font-size: variables.$header-small;
+      }
+    }
+
+    p {
+      margin: 0;
+      margin-bottom: 2rem;
+      color: variables.$text-white;
+      font-size: variables.$large;
+      line-height: 1.2;
+      text-align: left;
+      @include mixins.media(phone) {
+        font-size: variables.$medium;
+      }
+    }
+    button {
+      font-size: variables.$large;
+      width: 100%;
+      border-radius: 9999px;
+      appearance: none;
+      border: none;
+      background-color: variables.$accent-darker-color;
+      color: variables.$text-white;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      @include mixins.media(phone) {
+        font-size: variables.$medium;
+      }
+      &:hover {
+        transition: opacity 0.3s ease;
+        opacity: 0.9;
+      }
+      &:active {
+        transition: transform 0.3s ease;
+        transform: scale(0.95);
+      }
+    }
+  }
+}

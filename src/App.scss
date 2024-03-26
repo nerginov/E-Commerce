@@ -1,0 +1,45 @@
+@use "./variables.scss" as variables;
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&family=Yeseva+One&display=swap");
+
+// font-family: 'Figtree', sans-serif;
+// font-family: 'Yeseva One', cursive;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+  outline-color: variables.$accent-color !important;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.5;
+  font-family: "Figtree", sans-serif;
+  /* scroll-behavior: smooth; */
+  button {
+    font-family: "Figtree", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Yeseva One", cursive;
+    font-weight: normal;
+  }
+}
+
+body {
+  font-family: "Figtree", sans-serif;
+}

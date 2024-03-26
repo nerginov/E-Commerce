@@ -1,0 +1,39 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss";
+
+.announcement-bar {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: variables.$small;
+  color: variables.$text-black;
+  background-color: variables.$background-secondary;
+  border-bottom: 1px solid variables.$border-color;
+  box-shadow: variables.$box-bottom-shadow;
+  @include mixins.media(phone) {
+    font-size: variables.$tiny;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  strong {
+    font-weight: variables.$semiBold-weight;
+  }
+  div {
+    display: flex;
+    @include mixins.media(phone) {
+      flex: 1;
+      &:first-child {
+        padding-left: 0.5rem;
+      }
+      &:last-child {
+        padding-right: 0.5rem;
+      }
+    }
+  }
+  img {
+    width: 1.4rem;
+    height: auto;
+    margin-right: 0.3rem;
+  }
+}

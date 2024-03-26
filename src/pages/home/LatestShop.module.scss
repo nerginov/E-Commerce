@@ -1,0 +1,68 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+
+.latest-shop {
+  z-index: 2;
+  position: relative;
+  padding-left: 25rem;
+  padding-right: 25rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: variables.$background-main;
+  text-align: center;
+  box-shadow: variables.$box-bottom-shadow;
+
+  @include mixins.media(phone) {
+    padding-inline: 5rem;
+  }
+  @include mixins.media(tablet) {
+    padding-inline: 10rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: variables.$header-medium;
+    // letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+    @include mixins.media(phone) {
+      margin-inline: 2rem;
+      font-size: variables.$header-small;
+    }
+  }
+
+  a {
+    position: relative;
+    color: variables.$text-black;
+
+    text-decoration: none;
+    display: inline-block;
+    font-size: variables.$small;
+    margin-top: 8rem;
+    @include mixins.media(phone) {
+      margin-top: 6rem;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background-color: variables.$text-black;
+      transition: width 0.3s ease-out;
+      &:hover {
+        width: 100%;
+      }
+    }
+    &:hover::before {
+      width: 100%;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:active {
+      transform: scale(1);
+    }
+  }
+}

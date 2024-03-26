@@ -1,0 +1,103 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss";
+
+.burger-menu {
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+
+  .lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .line {
+      height: 0.4rem;
+      background-color: variables.$accent-color;
+      transition: 0.5s;
+    }
+    .line:not(:last-child) {
+      margin-bottom: 0.7rem;
+    }
+  }
+}
+.menu-drawer {
+  z-index: 11 !important;
+  left: 0;
+  width: calc(100vw - 20%);
+  padding: 2rem;
+  .drawer-close {
+    font-size: variables.$large + 1;
+    width: max-content;
+    margin-bottom: 5rem;
+    appearance: none;
+    background: none;
+    border: none;
+    color: variables.$accent-color;
+  }
+  .navigation-options {
+    li {
+      width: 100%;
+      border-bottom: 1px solid variables.$border-color;
+      list-style: none;
+      a {
+        display: block;
+        text-decoration: none;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        letter-spacing: 0.12em;
+        font-size: variables.$small;
+        color: variables.$text-black;
+        font-weight: variables.$medium-weight;
+      }
+    }
+  }
+}
+
+.leftSlideIn {
+  /* Your specific styles for the combination of both classes */
+  visibility: visible;
+  @keyframes leftSlideIn {
+    from {
+      left: calc(-100vw - 70%);
+      @include mixins.media(tablet) {
+        left: calc(-100vw - 40%);
+      }
+      @include mixins.media(phone) {
+        left: calc(-100vw - 20%);
+      }
+      /* Initial position off-screen to the right */
+    }
+    to {
+      left: 0 !important; /* Final position at the right edge */
+    }
+  }
+  animation: leftSlideIn 0.3s ease forwards !important;
+  // left: 0;
+}
+
+.leftSlideOut {
+  /* Your specific styles for the combination of both classes */
+  @keyframes leftSlideOut {
+    from {
+      /* Initial position off-screen to the right */
+      left: 0;
+      visibility: visible;
+    }
+    to {
+      left: calc(-100vw - 70%); /* Final position at the right edge */
+      @include mixins.media(tablet) {
+        left: calc(-100vw - 40%);
+      }
+      @include mixins.media(phone) {
+        left: calc(-100vw - 20%);
+      }
+    }
+  }
+  animation: leftSlideOut 0.8s ease forwards !important;
+  // visibility: hidden;
+}

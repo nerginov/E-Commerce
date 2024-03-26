@@ -1,0 +1,371 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+
+.detailed-product {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-inline: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 4rem;
+  grid-row-gap: 10rem;
+  @include mixins.media(large-desktop) {
+    padding-inline: 15%;
+  }
+  @include mixins.media(tablet) {
+    padding-inline: 2rem;
+    grid-column-gap: 3rem;
+  }
+
+  @include mixins.media(phone) {
+    grid-row-gap: 5rem;
+    padding: 2rem 0rem 0rem 0rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .img-container {
+    display: flex;
+    .vertical-catalog {
+      display: flex;
+      flex-direction: column;
+      margin-right: 4rem;
+      img {
+        border-radius: 0.5rem;
+        max-width: 9rem;
+      }
+      img:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+      @include mixins.media(phone, tablet) {
+        display: none;
+      }
+    }
+    .carousel-container {
+      img {
+        border-radius: 0.5rem;
+      }
+      z-index: 1;
+      width: 100%;
+      position: relative;
+
+      .carousel {
+        ul:first-of-type {
+          height: 100%;
+          //stretching the img 100% insidew the carousel otherwise it shrinks
+        }
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        @include mixins.media(phone) {
+          position: relative;
+        }
+      }
+    }
+  }
+
+  .details-container {
+    header {
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 3rem;
+      h1 {
+        font-size: 2.6rem;
+        margin-bottom: 1rem;
+        @include mixins.media(phone) {
+          font-size: variables.$header-small;
+        }
+      }
+      p {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+      @include mixins.media(phone) {
+        text-align: center;
+      }
+    }
+
+    .actions {
+      display: flex;
+      .customized-quantity-input {
+        border: 1px solid #e0e0e0;
+        margin-right: 0.5rem;
+        .quantity-increase,
+        .quantity-decrease {
+          color: variables.$text-lightBlack;
+          padding-inline: 2rem;
+          font-size: 2rem;
+          border: none;
+          background: none;
+          padding-bottom: 1rem;
+          padding-top: 1rem;
+        }
+
+        #quantity-input {
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            //removing arrows
+          }
+          font-size: 1.8rem;
+
+          border: none;
+          background: none;
+          padding: 1rem 0.5rem;
+          text-align: center;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      .add-to-cart-btn {
+        flex: 1;
+        position: relative;
+        border: none;
+        box-shadow: variables.$box-bottom-shadow;
+        background-color: rgba(222, 190, 72, 0.75);
+        color: variables.$text-white;
+        font-size: 1.6rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        padding-left: 2rem;
+        @include mixins.media(tablet) {
+          padding-left: 4rem;
+        }
+        @include mixins.media(large-desktop) {
+          padding-left: 0rem !important;
+        }
+      }
+
+      .img-container {
+        padding-left: 1rem;
+        z-index: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: variables.$accent-color;
+        width: 4rem;
+        height: 100%;
+        img {
+          width: 2.5rem;
+          z-index: 2;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          right: -1.5rem;
+          width: 0;
+          height: 100%;
+          border: 15px solid transparent; /* Adjust border size as needed */
+          border-color: variables.$accent-color; /* Adjust border color as needed */
+          transform: skewX(-20deg);
+        }
+      }
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .product-info {
+    margin-bottom: 3rem;
+
+    .product-specifications {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+
+      div:not(:last-child) {
+        margin-right: 5rem;
+      }
+      div {
+        text-align: center;
+        p:first-of-type {
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+        font-size: variables.$tiny;
+        img {
+          width: 2rem;
+        }
+
+        li {
+          list-style: none;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .product-description {
+      border-bottom: 1px solid #e0e0e0;
+      font-size: variables.$small;
+      line-height: 2rem;
+      padding-bottom: 3rem;
+    }
+  }
+  @include mixins.media(phone) {
+    padding-inline: 2rem;
+  }
+}
+
+.shipping-and-return {
+  div:first-of-type {
+    button {
+      border-top: 1px solid #e0e0e0;
+    }
+  }
+  div {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    appearance: none;
+    background: none;
+    color: variables.$text-black;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    font-size: variables.$medium;
+    font-weight: bold;
+    width: 100%;
+    height: 6rem;
+    span {
+      img {
+        width: 1.6rem;
+      }
+    }
+  }
+  p {
+    overflow: hidden;
+    font-size: variables.$small;
+    padding-left: 1rem;
+    padding-right: 5rem;
+    margin-bottom: 2rem;
+  }
+  @include mixins.media(phone) {
+    padding-inline: 2rem;
+  }
+}
+.care-instructions {
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  h2 {
+    font-size: variables.$medium;
+    margin-bottom: 2rem;
+  }
+  p {
+    font-size: variables.$small;
+  }
+  @include mixins.media(phone) {
+    padding-inline: 2rem;
+    padding-bottom: 5rem;
+  }
+}
+.active {
+  .img-container {
+    overflow-x: hidden;
+    @keyframes buttonSlide {
+      0% {
+        width: 4rem;
+      }
+      80% {
+        width: 100%;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+    animation: buttonSlide 1s ease;
+    width: 100%;
+
+    &::before {
+      @keyframes iconSkew {
+        from {
+          transform: skewX(-20deg);
+        }
+        to {
+          transform: skewX(0deg);
+        }
+      }
+      animation: iconSkew 1s ease;
+      transform: skewX(0deg);
+    }
+  }
+  .img-container {
+    img {
+      @keyframes jiggleAnimation {
+        0% {
+          transform: rotate(0);
+        }
+        40% {
+          transform: rotate(-10deg);
+        }
+        60% {
+          transform: rotate(10deg);
+        }
+        80% {
+          transform: scale(1.4);
+        }
+        100% {
+          transform: rotate(0);
+        }
+      }
+      animation: jiggleAnimation 1s ease;
+    }
+  }
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+    60% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0.95);
+    }
+  }
+  animation: scale 1s ease;
+}
+
+.delivery {
+  background-color: variables.$background-secondary;
+  @include mixins.media(phone) {
+    padding-inline: 2rem;
+  }
+}
+
+.suggestions {
+  padding: 5rem 10%;
+  background-color: variables.$background-main;
+  text-align: center;
+  box-shadow: variables.$box-bottom-shadow;
+  div {
+    z-index: 1 !important;
+  }
+
+  @include mixins.media(phone) {
+    padding-inline: 2rem;
+  }
+  @include mixins.media(tablet) {
+    padding-inline: 5rem;
+  }
+  @include mixins.media(large-desktop) {
+    padding-inline: 15%;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+}

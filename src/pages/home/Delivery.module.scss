@@ -1,0 +1,68 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+.delivery-section {
+  position: relative;
+  background-color: white;
+  box-shadow: variables.$box-bottom-shadow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  @include mixins.media(phone) {
+    padding-inline: 2rem;
+  }
+
+  img {
+    max-width: 5rem;
+    height: auto;
+    margin-right: 2rem;
+    @include mixins.media(phone) {
+      max-width: 3.5rem;
+    }
+  }
+
+  .delivery {
+    display: flex;
+    border-right: 1px solid variables.$border-color;
+    padding-right: 4rem;
+    margin-right: 4rem;
+    @include mixins.media(phone) {
+      padding-right: 2rem;
+      margin-right: 2rem;
+    }
+  }
+  .delivery,
+  .return {
+    display: flex;
+    align-items: center;
+    @include mixins.media(phone) {
+      flex: 1;
+    }
+    p {
+      font-family: "Yeseva One", cursive;
+      font-size: variables.$medium;
+      // font-weight: variables.$semiBold-weight;
+      @include mixins.media(phone) {
+        // font-weight: variables.$medium-weight;
+        font-size: variables.$tiny;
+      }
+
+      span {
+        font-size: variables.$small;
+        @include mixins.media(phone) {
+          font-size: variables.$tiny;
+        }
+
+        a {
+          text-decoration: underline;
+          color: variables.$text-black;
+          font-weight: variables.$light-weight;
+          @include mixins.media(phone) {
+            font-size: variables.$tiny - 0.1rem;
+          }
+        }
+      }
+    }
+  }
+}

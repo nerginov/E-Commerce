@@ -1,0 +1,83 @@
+@use "../mixins.scss";
+@use "../variables.scss" as variables;
+
+.shop-tool-bar {
+  border: 1px solid variables.$border-color;
+  box-shadow: variables.$box-bottom-shadow;
+  display: flex;
+  justify-content: space-between;
+  height: 6rem;
+
+  .group {
+    display: flex;
+    .filter-button,
+    .sort-button {
+      width: 100%;
+      height: 100%;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      font-size: variables.$medium;
+      text-transform: uppercase;
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: variables.$background-main;
+      color: rgb(59, 59, 59); //lighter black
+      border: none;
+      border-left: 1px solid variables.$border-color;
+
+      @include mixins.media(phone) {
+        font-size: variables.$small;
+        padding-inline: 0rem;
+        text-align: center;
+      }
+      span {
+        font-size: variables.$small;
+        font-style: oblique;
+        @include mixins.media(phone) {
+          font-size: variables.$tiny;
+        }
+      }
+      img {
+        max-width: 1.2rem;
+        height: auto;
+        transform: translateY(0.5rem);
+        margin-left: 0.2rem;
+      }
+    }
+    .customize-sort,
+    .customize-filter {
+      width: 100%;
+    }
+    @include mixins.media(phone, tablet) {
+      width: 100%;
+    }
+  }
+}
+
+.popup {
+  @keyframes scalePopup {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  animation: scalePopup 0.3s ease-in-out;
+}
+.popout {
+  @keyframes scalePopOut {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+  animation: scalePopOut 0.3s ease-in-out;
+}

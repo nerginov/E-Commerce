@@ -1,0 +1,207 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+
+.shop-item {
+  margin-inline: 3rem;
+
+  @include mixins.media(phone) {
+    margin-inline: 0rem;
+  }
+
+  .imgContainer {
+    position: relative;
+    overflow-y: hidden;
+
+    .quickView {
+      background-color: variables.accent-color-alpha(0.75);
+      color: variables.$text-white;
+      position: absolute;
+      bottom: 0.2rem;
+      left: 0;
+      width: 100%;
+      border: none;
+      appearance: none;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    .hovered {
+      @keyframes fadeInFromBottom {
+        from {
+          transform: translateY(150%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      opacity: 1;
+      animation: fadeInFromBottom 0.4s ease forwards;
+    }
+
+    img {
+      border-radius: 0.5rem;
+      cursor: pointer;
+      max-height: 100%;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .name {
+      font-size: variables.$medium;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: variables.$small;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .vat {
+      color: variables.$accent-color;
+      font-size: variables.$tiny;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .addToCart {
+    position: relative;
+    border: none;
+    width: 100%;
+    box-shadow: variables.$box-bottom-shadow;
+    background-color: rgba(222, 190, 72, 0.75);
+    color: variables.$text-white;
+    font-size: variables.$medium;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+
+    @include mixins.media(phone) {
+      padding-left: 2rem;
+    }
+
+    .img-container {
+      padding-left: 1rem;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: variables.$accent-color;
+      width: 4rem;
+      height: 100%;
+
+      @include mixins.media(phone) {
+        padding-left: 0.5rem;
+      }
+
+      a {
+        height: max-content;
+        display: block;
+      }
+
+      img {
+        width: 2.5rem;
+        z-index: 2;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: -1.5rem;
+        width: 0;
+        height: 100%;
+        border: 15px solid transparent;
+        border-color: variables.$accent-color;
+        transform: skewX(-20deg);
+
+        @include mixins.media(phone) {
+          right: -0.6rem;
+        }
+      }
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+.active {
+  .img-container {
+    overflow-x: hidden;
+    @keyframes buttonSlide {
+      0% {
+        width: 4rem;
+      }
+      80% {
+        width: 100%;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+    animation: buttonSlide 1s ease;
+    width: 100%;
+
+    &::before {
+      @keyframes iconSkew {
+        from {
+          transform: skewX(-20deg);
+        }
+        to {
+          transform: skewX(0deg);
+        }
+      }
+      animation: iconSkew 1s ease;
+      transform: skewX(0deg);
+    }
+  }
+  .img-container {
+    img {
+      @keyframes jiggleAnimation {
+        0% {
+          transform: rotate(0);
+        }
+        40% {
+          transform: rotate(-10deg);
+        }
+        60% {
+          transform: rotate(10deg);
+        }
+        80% {
+          transform: scale(1.4);
+        }
+        100% {
+          transform: rotate(0);
+        }
+      }
+      animation: jiggleAnimation 1s ease;
+    }
+  }
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+    60% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0.95);
+    }
+  }
+  animation: scale 1s ease;
+}

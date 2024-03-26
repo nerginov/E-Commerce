@@ -1,0 +1,55 @@
+@mixin absolute-center($position) {
+  position: absolute;
+
+  @if $position == "vertical" {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  } @else if $position == "horizontal" {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  } @else if $position == "both" {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin media($breakpoints...) {
+  @each $breakpoint in $breakpoints {
+    @if $breakpoint == phone {
+      @media only screen and (max-width: 767px) {
+        @content;
+      }
+    }
+
+    @if $breakpoint == tablet {
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        @content;
+      }
+    }
+
+    @if $breakpoint == large-desktop {
+      @media only screen and (min-width: 1600px) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin custom-font(
+  $font-size,
+  $font-weight: normal,
+  $font-family: "Figtree, sans-serif",
+  $letter-spacing: normal
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  font-family: $font-family;
+  letter-spacing: $letter-spacing;
+}

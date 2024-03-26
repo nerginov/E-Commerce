@@ -1,0 +1,36 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss";
+
+.footer {
+  background-color: variables.$background-secondary;
+  padding: 5rem 0;
+  text-align: center;
+
+  .footer-links {
+    margin-bottom: 5rem;
+  }
+
+  .footer-links a {
+    color: variables.$text-darkGray;
+    text-decoration: none;
+    font-size: variables.$small;
+    padding-inline: 1.5rem;
+    @include mixins.media(phone) {
+      padding-inline: 1rem;
+    }
+
+    &:hover {
+      color: variables.$text-black;
+      text-decoration: underline;
+    }
+  }
+  .footer-links a:not(:last-child) {
+    border-right: 0.1rem solid variables.$text-darkGray;
+  }
+
+  .footer-copyright {
+    text-align: center;
+    color: variables.$text-grayish;
+    font-size: variables.$small;
+  }
+}

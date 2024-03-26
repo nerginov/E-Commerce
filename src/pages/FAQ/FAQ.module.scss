@@ -1,0 +1,100 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+
+.FAQ {
+  color: variables.$text-black;
+  padding: 5rem 15rem;
+  @include mixins.media(phone) {
+    padding: 5rem 2rem 5rem 2rem;
+  }
+  @include mixins.media(tablet) {
+    padding-inline: 10rem;
+  }
+  .FAQ-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      letter-spacing: 0.2rem;
+      font-size: variables.$header-large;
+      margin-bottom: 1rem;
+      @include mixins.media(phone) {
+        margin-bottom: 3rem;
+        font-size: variables.$header-medium;
+      }
+    }
+
+    p {
+      font-size: variables.$medium;
+      text-align: center;
+      @include mixins.media(phone) {
+        text-align: justify;
+      }
+
+      a {
+        text-decoration: none;
+        color: variables.$accent-color;
+        font-weight: bold;
+        font-size: variables.$medium;
+      }
+    }
+  }
+
+  .shipping,
+  .return,
+  .other {
+    h2 {
+      margin-bottom: 1rem;
+      margin-top: 7rem;
+      letter-spacing: 0.3rem;
+      font-size: variables.$header-tiny;
+    }
+  }
+  .questions-container {
+    .question {
+      border-bottom: 0.1rem solid variables.$border-color;
+      button {
+        color: variables.$text-black;
+        position: relative;
+        background: none;
+        border: none;
+        text-align: left;
+        height: 6rem;
+        width: 100%;
+        font-size: variables.$small;
+        font-weight: bold;
+
+        img {
+          position: absolute;
+          right: 2rem;
+          @include mixins.absolute-center(vertical);
+          max-width: 1.6rem;
+          height: auto;
+        }
+      }
+      p {
+        position: relative;
+        padding-left: 1rem;
+        padding-right: 5rem;
+        font-size: variables.$small;
+        bottom: 0.5rem;
+        overflow: hidden;
+        a {
+          text-decoration: none;
+          color: variables.$accent-color;
+          font-weight: bold;
+          position: relative;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        span {
+          margin-top: 2rem;
+          display: block;
+        }
+      }
+    }
+  }
+}

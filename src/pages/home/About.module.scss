@@ -1,0 +1,94 @@
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss";
+.container {
+  background-color: variables.$background-secondary;
+  box-shadow: variables.$box-bottom-shadow;
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 10rem;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid variables.$border-color;
+    // border-top: 1px solid variables.$border-color;
+    h1 {
+      color: variables.$text-lightBlack;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 2.4rem;
+      text-align: center;
+
+      span {
+        font-size: 1.8rem;
+      }
+      .accentSpan {
+        font-size: 2.4rem;
+        color: variables.$accent-color;
+      }
+    }
+  }
+  .content {
+    @include mixins.media(phone) {
+      display: flex;
+      flex-direction: column;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 40%;
+      // height: 100%;
+      // background-color: #debe48;
+      opacity: 1;
+      background-image: radial-gradient(#f3f4f3 0.85px, transparent 0.85px),
+        radial-gradient(#f3f4f3 0.85px, #debe48b3 0.95px);
+      background-size: 64px 64px;
+      background-position: 0 0, 17px 17px;
+      // border-radius: 5rem;
+
+      img {
+        max-height: 50rem;
+      }
+    }
+    display: flex;
+    // gap: 10rem;
+    .wrapper {
+      flex: 60%;
+      padding-right: 15rem;
+      padding-left: 5rem;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      background-color: #f3f4f3;
+      @include mixins.media(phone) {
+        padding-inline: 5rem;
+      }
+    }
+
+    h2 {
+      color: variables.$text-black;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+    p {
+      color: variables.$text-lightBlack;
+      padding-bottom: 2rem;
+      font-size: 1.6rem;
+      border-bottom: 1px solid variables.$border-color;
+      span {
+        color: variables.$accent-color;
+        font-weight: bold;
+      }
+    }
+  }
+}
+.aboutImg {
+  text-align: center;
+
+  @include mixins.media(phone) {
+    img {
+      width: 10rem;
+      height: 20rem;
+    }
+  }
+}

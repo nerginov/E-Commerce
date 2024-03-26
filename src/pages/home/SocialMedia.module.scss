@@ -1,0 +1,135 @@
+@use "../../mixins.scss";
+@use "../../variables.scss" as variables;
+
+.social-media-section {
+  background-color: variables.$background-secondary;
+  padding: 5rem 15rem 15rem 15rem; //adding extra padding on bottom to make up for the 2nd embed photo thats out of the flow;
+  display: flex;
+  box-shadow: variables.$box-bottom-shadow;
+  @include mixins.media(phone) {
+    padding: 5rem 2rem 15rem 2rem;
+    flex-direction: column;
+  }
+  @include mixins.media(tablet) {
+    padding: 0rem 5rem 15rem 5rem;
+  }
+  @media only screen and (min-width: 1025px) and (max-width: 1380px) {
+    padding: 0rem 10rem 15rem 10rem;
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+    flex: 1;
+    order: 2;
+    transform: translateY(5rem);
+    .embed-phone {
+      align-self: center;
+      background-color: white;
+      width: max-content;
+      outline: 10px solid white;
+      border-radius: 1px;
+      height: 59rem;
+    }
+    @include mixins.media(phone) {
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-size: variables.$header-medium;
+      @include mixins.media(phone) {
+        font-size: variables.$header-small;
+      }
+    }
+    h2 {
+      font-size: variables.$header-small;
+      margin-bottom: 5rem;
+      @include mixins.media(phone) {
+        font-size: variables.$header-tiny;
+      }
+    }
+    span {
+      color: variables.$accent-color;
+    }
+    p {
+      font-size: variables.$medium;
+      color: variables.$text-lightBlack;
+      margin-bottom: 5rem;
+      @include mixins.media(phone) {
+        margin-bottom: 2rem;
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      column-gap: 15rem;
+      &__inner-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        border-radius: 50%;
+        border: 1px solid variables.$border-color;
+        box-shadow: variables.$box-bottom-shadow;
+        img {
+          max-width: 3rem;
+        }
+        div {
+          position: absolute;
+          text-wrap: nowrap;
+          bottom: -7rem;
+
+          p:nth-child(1) {
+            font-size: variables.$medium;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+          }
+          p:nth-child(2) {
+            margin-bottom: 0rem;
+            font-size: variables.$tiny;
+            width: 15rem;
+            text-wrap: wrap;
+          }
+        }
+      }
+    }
+  }
+
+  .instagram-embed {
+    position: relative;
+    flex: 1;
+    order: 1;
+    justify-self: flex-start;
+    @include mixins.media(phone) {
+      display: flex;
+    }
+    @include mixins.media(tablet) {
+      transform: scale(0.7) translateX(-6rem);
+    }
+    @media only screen and (min-width: 1025px) and (max-width: 1380px) {
+      transform: scale(0.8) translateX(-9rem);
+    }
+    .embed-one {
+      width: max-content;
+      height: 54.6rem;
+      outline: 10px solid white;
+      border-radius: 1px;
+    }
+    .embed-two {
+      position: absolute;
+      height: 54.6rem;
+      bottom: -10rem;
+      left: 20rem;
+      outline: 10px solid white;
+      border-radius: 1px;
+      @include mixins.media(tablet) {
+        left: 10rem;
+      }
+    }
+  }
+}
