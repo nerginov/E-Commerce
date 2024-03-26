@@ -3,8 +3,10 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import CookiePolicy from "./CookiePolicy";
 import TermsAndConditions from "./TermsAndConditions";
 import styles from "./PoliciesAndTerms.module.scss";
+import useWindowResize from "../../hooks/useWindowResize";
 
 const PoliciesAndTerms = () => {
+  const windowWidth = useWindowResize();
   const [selectedTab, setSelectedTab] = useState("Privacy Policy");
 
   const handleTabClick = (tab) => {
@@ -33,34 +35,36 @@ const PoliciesAndTerms = () => {
   return (
     <div className={styles["terms-and-policies"]}>
       <div className={styles.content}>
-        <div className={styles.sidebar}>
-          <ul>
-            <li
-              onClick={() => handleTabClick("Privacy Policy")}
-              className={
-                selectedTab === "Privacy Policy" ? styles.activeTab : ""
-              }
-            >
-              Privacy Policy
-            </li>
-            <li
-              onClick={() => handleTabClick("Cookie Policy")}
-              className={
-                selectedTab === "Cookie Policy" ? styles.activeTab : ""
-              }
-            >
-              Cookie Policy
-            </li>
-            <li
-              onClick={() => handleTabClick("Terms and Conditions")}
-              className={
-                selectedTab === "Terms and Conditions" ? styles.activeTab : ""
-              }
-            >
-              Terms and Conditions
-            </li>
-          </ul>
-        </div>
+        {windowWidth > 767 && (
+          <div className={styles.sidebar}>
+            <ul>
+              <li
+                onClick={() => handleTabClick("Privacy Policy")}
+                className={
+                  selectedTab === "Privacy Policy" ? styles.activeTab : ""
+                }
+              >
+                Privacy Policy
+              </li>
+              <li
+                onClick={() => handleTabClick("Cookie Policy")}
+                className={
+                  selectedTab === "Cookie Policy" ? styles.activeTab : ""
+                }
+              >
+                Cookie Policy
+              </li>
+              <li
+                onClick={() => handleTabClick("Terms and Conditions")}
+                className={
+                  selectedTab === "Terms and Conditions" ? styles.activeTab : ""
+                }
+              >
+                Terms and Conditions
+              </li>
+            </ul>
+          </div>
+        )}
         <div className={styles["main-content"]}>{renderContent()}</div>
       </div>
     </div>

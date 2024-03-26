@@ -3,6 +3,9 @@
 
 .terms-and-policies {
   padding: 5rem 10%;
+  @include mixins.media(phone) {
+    padding-inline: 5rem;
+  }
   .header {
     width: 100%;
     text-align: center;
@@ -14,6 +17,9 @@
   .content {
     display: grid;
     grid-template-columns: 0.25fr 1fr;
+    @include mixins.media(phone) {
+      display: flex;
+    }
 
     .sidebar {
       li {
@@ -36,6 +42,10 @@
       border-left: 1px solid variables.$border-color;
       scroll-behavior: smooth;
       grid-column: 2;
+      @include mixins.media(phone) {
+        border-left: none;
+        padding-left: 0;
+      }
       a {
         text-decoration: none;
         color: variables.$accent-color;

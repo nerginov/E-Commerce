@@ -47,6 +47,9 @@ const DetailedProduct = (props) => {
   const [isIncrementDisabled, setIsIncrementDisabled] = useState(false); //disable icrement button until the fetch is complete
 
   useEffect(() => {
+    console.log(productSuggestions);
+  }, [productSuggestions]);
+  useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
