@@ -14,10 +14,7 @@ const Home = (props) => {
   return (
     <>
       <Hero />
-      <LazyLoader>
-        <LatestShop addToCart={props.addToCart} />
-      </LazyLoader>
-
+      <LatestShop addToCart={props.addToCart} />
       <About />
       <Delivery />
       <HomeCTA />
