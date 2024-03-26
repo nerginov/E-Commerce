@@ -158,7 +158,7 @@ function App() {
   }, []); // Run on mount
 
   return (
-    <Router>
+    <Router basename="/e-commerce-tu1r">
       <ScrollToTop />
       <CookieConsentBanner />
       <Navbar
