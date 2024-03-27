@@ -4,7 +4,7 @@ Welcome to Siallure, your destination for handmade earrings! Siallure is an e-co
 
 ## Screenshots
 
-![App Screenshot](src/assets/webpage-screenshot.jpeg)
+![App Screenshot](src/assets/webpage-screenshot.jpg)
 
 ## Live Site
 
